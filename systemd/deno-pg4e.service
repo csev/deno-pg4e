@@ -1,0 +1,19 @@
+[Unit]
+Description=PG4E Deno HTTP Service
+After=network.target
+
+[Service]
+Type=simple
+User=deno-pg4e
+Group=deno-pg4e
+WorkingDirectory=/opt/deno-pg4e
+ExecStart=/usr/local/bin/deno run --unstable-kv --allow-net=127.0.0.1:8000 --allow-read=/var/lib/deno-pg4e --allow-write=/var/lib/deno-pg4e /opt/deno-pg4e/main.ts
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/deno-pg4e
+
+[Install]
+WantedBy=multi-user.target
