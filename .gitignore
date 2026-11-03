@@ -1,0 +1,6 @@
+*.kv
+*.kv-shm
+*.kv-wal
+.env
+.DS_Store
+node_modules/
